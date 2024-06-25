@@ -8,11 +8,12 @@ function App() {
   const [filteredFlights, setFilteredFlights] = useState([]);
   const [searched, setSearched] = useState(false);
 
-  const handleSearch = (departureCity, arrivalCity) => {
+  const handleSearch = (departureCity, arrivalCity, stops) => {
     const filtered = flightsData.filter(
       (flight) =>
         flight.from.toLowerCase() === departureCity.toLowerCase() &&
-        flight.to.toLowerCase() === arrivalCity.toLowerCase()
+        flight.to.toLowerCase() === arrivalCity.toLowerCase() &&
+        flight.stop === stops
     );
 
     setFilteredFlights(filtered);

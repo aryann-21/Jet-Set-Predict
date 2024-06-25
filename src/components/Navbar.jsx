@@ -6,6 +6,7 @@ function Navbar({ onSearch }) {
   const [arrivalCity, setArrivalCity] = useState("");
   const [departureDate, setDepartureDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
+  const [stops, setStops] = useState();
 
   const handleDepartureCityChange = (event) => {
     setDepartureCity(event.target.value);
@@ -13,6 +14,10 @@ function Navbar({ onSearch }) {
 
   const handleArrivalCityChange = (event) => {
     setArrivalCity(event.target.value);
+  };
+
+  const handleStopsChange = (event) => {
+    setStops(Number(event.target.value));
   };
 
   const handleDepartureDateChange = (event) => {
@@ -26,11 +31,11 @@ function Navbar({ onSearch }) {
   const swapPlaces = () => {
     setArrivalCity(departureCity);
     setDepartureCity(arrivalCity);
-    onSearch(departureCity, arrivalCity);
+    // onSearch(departureCity, arrivalCity, stops);
   };
 
   const handleSearch = () => {
-    onSearch(departureCity, arrivalCity);
+    onSearch(departureCity, arrivalCity, stops);
   };
 
   return (
@@ -38,7 +43,7 @@ function Navbar({ onSearch }) {
       <div className="container mx-auto px-4 py-4">
         <div className="search-bar flex flex-col md:flex-row justify-between items-center">
           <div className=" flex items-center font-bold text-3xl">
-            Flight Predictor
+            Jet-Set-Predict
             <img className="ml-3 w-14" src={logo} />
           </div>
           <div className="left flex flex-col sm:flex-row items-center gap-2 relative mb-2 md:mb-0">
@@ -60,6 +65,13 @@ function Navbar({ onSearch }) {
               value={arrivalCity}
               onChange={handleArrivalCityChange}
               placeholder="To-"
+              className="w-full sm:w-1/2 pl-6 pr-3 py-2 text-gray-200 border border-gray-700 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+            />
+            <input
+              type="number"
+              value={stops}
+              onChange={handleStopsChange}
+              placeholder="No. of Stops"
               className="w-full sm:w-1/2 pl-6 pr-3 py-2 text-gray-200 border border-gray-700 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
             />
           </div>

@@ -35,7 +35,7 @@ const FlightSearch = ({ flights }) => {
                 </p>
                 <p>{flight.duration}</p>
                 <p className="text-green-600">
-                  {flight.isNonstop ? "Nonstop" : "1 Stop"}
+                  {flight.isNonstop ? "Nonstop" : flight.stop + " stops"}
                 </p>
               </div>
             </div>
