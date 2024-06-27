@@ -13,7 +13,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn import preprocessing
 from sklearn.preprocessing import LabelEncoder
 from sklearn.linear_model import Lasso
-df = pd.read_csv(r'flight_dataset.csv')
+df = pd.read_csv(r'c:\Users\hp5cd\OneDrive\Desktop\React\Flight-Predictor\src\data\flight_dataset.csv')
 df['Combined_Date'] = df.apply(lambda row: f"{row['Date']:02d}-{row['Month']:02d}-{row['Year']}", axis=1)
 df['Day'] = pd.to_datetime(df['Combined_Date'], format='%d-%m-%Y').dt.day_name()
 grouped_by_airline = df.groupby('Airline')
