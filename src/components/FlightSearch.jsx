@@ -19,7 +19,7 @@ const FlightSearch = ({ flights }) => {
           >
             <div className="w-20 h-20 flex-shrink-0 mr-4">
               <img
-                src={flight.img}
+                src={flight.img || 'default_image_url'} // Use a default image if none is provided
                 alt={flight.airline}
                 className="w-full h-full object-cover rounded-lg"
               />
@@ -35,7 +35,7 @@ const FlightSearch = ({ flights }) => {
                 </p>
                 <p>{flight.duration}</p>
                 <p className="text-green-600">
-                  {flight.isNonstop ? "Nonstop" : flight.stop + " stops"}
+                  {flight.isNonstop}
                 </p>
               </div>
             </div>

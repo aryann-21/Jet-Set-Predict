@@ -5,37 +5,22 @@ function Navbar({ onSearch }) {
   const [departureCity, setDepartureCity] = useState("");
   const [arrivalCity, setArrivalCity] = useState("");
   const [departureDate, setDepartureDate] = useState("");
-  const [returnDate, setReturnDate] = useState("");
-  const [stops, setStops] = useState();
+  const [stops, setStops] = useState(0); // Ensure default value is set
 
-  const handleDepartureCityChange = (event) => {
+  const handleDepartureCityChange = (event) =>
     setDepartureCity(event.target.value);
-  };
-
-  const handleArrivalCityChange = (event) => {
-    setArrivalCity(event.target.value);
-  };
-
-  const handleStopsChange = (event) => {
-    setStops(Number(event.target.value));
-  };
-
-  const handleDepartureDateChange = (event) => {
+  const handleArrivalCityChange = (event) => setArrivalCity(event.target.value);
+  const handleStopsChange = (event) => setStops(Number(event.target.value));
+  const handleDepartureDateChange = (event) =>
     setDepartureDate(event.target.value);
-  };
-
-  const handleReturnDateChange = (event) => {
-    setReturnDate(event.target.value);
-  };
 
   const swapPlaces = () => {
     setArrivalCity(departureCity);
     setDepartureCity(arrivalCity);
-    // onSearch(departureCity, arrivalCity, stops);
   };
 
   const handleSearch = () => {
-    onSearch(departureCity, arrivalCity, stops);
+    onSearch(departureCity, arrivalCity, stops, departureDate);
   };
 
   return (
@@ -75,19 +60,12 @@ function Navbar({ onSearch }) {
               className="w-full sm:w-1/2 pl-6 pr-3 py-2 text-gray-200 border border-gray-700 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
             />
           </div>
-          <div className="mid flex flex-col sm:flex-row items-center gap-2 mb-2 md:mb-0">
+          <div className="mid flex flex-col sm:flex-row items-center gap-2 mb-2 md:mb-0 w-80">
             <input
               type="date"
               value={departureDate}
               onChange={handleDepartureDateChange}
               placeholder="On-"
-              className="w-full sm:w-1/2 px-3 py-2 text-gray-200 border border-gray-700 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
-            />
-            <input
-              type="date"
-              value={returnDate}
-              onChange={handleReturnDateChange}
-              placeholder="Till-"
               className="w-full sm:w-1/2 px-3 py-2 text-gray-200 border border-gray-700 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
             />
           </div>
